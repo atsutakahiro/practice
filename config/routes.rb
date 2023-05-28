@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'dash_boards/index'
-  devise_for :users, controllers: { passwords: 'users/passwords' }
+  devise_for :users, controllers: {
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
   root 'home#index'
 
   get '/users/dash_boards', to: 'dash_boards#index', as: 'dash_board'
