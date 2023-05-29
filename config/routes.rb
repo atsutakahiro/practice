@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
   root 'home#index'
 
-  get '/users/dash_boards', to: 'dash_boards#index', as: 'dash_board'
+  resources :dash_boards, only: [:index]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

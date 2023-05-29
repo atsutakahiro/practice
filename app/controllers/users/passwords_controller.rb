@@ -2,6 +2,6 @@ class Users::PasswordsController < Devise::PasswordsController
   protected
 
   def after_resetting_password_path_for(resource)
-    dash_board_path # ユーザーダッシュボード画面のパスに変更してください
+    dash_boards_index_path
   end
 end
