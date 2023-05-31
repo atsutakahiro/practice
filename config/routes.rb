@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'dash_boards/index'
+  devise_for :users, controllers: {
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
+  root 'home#index'
+
+  resources :dash_boards, only: [:index]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
