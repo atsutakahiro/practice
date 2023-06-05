@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="h3 mb-3 font-weight-normal">Forgot your password?</h2>
+  <h2 class="h3 mb-3 font-weight-normal"><%= t('devise.shared.links.forgot_your_password')%></h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-signin' }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>

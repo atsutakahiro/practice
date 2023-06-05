@@ -11,7 +11,7 @@
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to t('devise.registrations.shared.links.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name), class: 'btn btn-lg btn-primary btn-block' %><br />
+  <%= link_to t('devise.confirmations.new.resend_confirmation_instructions'), new_confirmation_path(resource_name), class: 'btn btn-lg btn-primary btn-block' %><br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
