@@ -1,25 +1,25 @@
 <div class="container">
-  <h2 class="h3 mb-3 font-weight-normal">Change your password</h2>
+  <h2 class="h3 mb-3 font-weight-normal"><%= t('devise.passwords.edit.change_my_password')%></h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-signin' }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.hidden_field :reset_password_token %>
 
     <div class="form-group">
-      <%= f.label :password, "New password", class: 'sr-only' %><br />
+      <%= f.label :password, class: 'sr-only' %><br />
       <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <em>(<%= @minimum_password_length %>文字以上)</em><br />
       <% end %>
-      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: 'New password', required: true %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: 'New password' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :password_confirmation, "Confirm new password", class: 'sr-only' %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Confirm new password', required: true %>
+      <%= f.label :password_confirmation, class: 'sr-only' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: 'Confirm new password' %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Change my password", class: 'btn btn-lg btn-primary btn-block' %>
+      <%= f.submit "#{t('devise.passwords.edit.change_my_password')}", class: 'btn btn-lg btn-primary btn-block' %>
     </div>
   <% end %>
 
