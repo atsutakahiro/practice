@@ -4,9 +4,16 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  
   root 'home#index'
 
   resources :dash_boards, only: [:index]
+
+  # 追加するルート
+  namespace :users do
+    resources :articles, path: '/articles'
+  end
+  
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
