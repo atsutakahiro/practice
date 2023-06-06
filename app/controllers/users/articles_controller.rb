@@ -24,11 +24,12 @@ class Users::ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article, notice: 'Article was successfully created.'
+      redirect_to users_articles_path, notice: 'Article was successfully created.'
     else
       render :new
     end
   end
+
 
   # PATCH/PUT /articles/1
   def update
