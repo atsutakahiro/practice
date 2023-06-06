@@ -19,7 +19,7 @@
         <td><%= link_to "詳細", users_article_path(article), class: "btn btn-primary" %></td>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
-        <td><%= image_tag rails_blob_path(article.image) if article.image.attached? %></td>
+        <td><%= image_tag article.image.variant(resize_to_limit: [300, 300]) if article.image.attached? %></td>
         <td>
           <%= link_to "編集", edit_users_article_path(article), class: "btn btn-primary" %>
           <%= link_to "削除", users_article_path(article), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>

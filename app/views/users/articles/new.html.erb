@@ -14,12 +14,11 @@
   <div class="mb-3">
     <%= form.label :image, "画像" %>
     <div class="input-group">
-      <%= form.file_field :image, class: "form-control", style: "display: none;", id: "imageFile" %>
-      <label for="imageFile" class="input-group-text">ファイルを選択</label>
+      <%= form.file_field :image, class: "form-control", style: "display: none;", id: "imageFile", onchange: "updateFileName(this)" %>
+      <label for="imageFile" class="btn btn-secondary">ファイルを選択</label>
     </div>
     <span id="fileName">選択されていません</span>
   </div>
-
 
   <div class="text-center">
     <%= form.submit "新規作成", class: "btn btn-primary" %>
@@ -28,7 +27,11 @@
 
 <script>
 function updateFileName(input) {
-  document.getElementById('fileName').innerText = input.files[0].name;
+  if (input.files && input.files[0]) {
+    document.getElementById('fileName').innerText = input.files[0].name;
+  } else {
+    document.getElementById('fileName').innerText = "選択されていません";
+  }
 }
 </script>
 
