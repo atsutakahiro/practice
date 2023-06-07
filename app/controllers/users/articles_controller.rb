@@ -34,7 +34,7 @@ class Users::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: 'Article was successfully updated.'
+      redirect_to users_articles_url, notice: 'Article was successfully updated.'
     else
       puts @article.errors.full_messages # エラーメッセージを出力
       render :edit
