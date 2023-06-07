@@ -1,38 +1,58 @@
-<h1>記事の新規作成</h1>
-
-<%= form_with(model: @article, url: users_articles_path, local: true, html: { multipart: true }) do |form| %>
-  <div class="mb-3">
-    <%= form.label :title, "タイトル" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :content, "内容" %>
-    <%= form.text_area :content, class: "form-control" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :image, "画像" %>
-    <div class="input-group">
-      <%= form.file_field :image, class: "form-control", style: "display: none;", id: "imageFile", onchange: "updateFileName(this)" %>
-      <label for="imageFile" class="btn btn-secondary">ファイルを選択</label>
+<div class="container">
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="text-danger">
+        新規作成に失敗しました、以下のエラーを修正してください。
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-    <span id="fileName">選択されていません</span>
-  </div>
+  <% end %>
 
   <div class="text-center">
-    <%= form.submit "新規作成", class: "btn btn-primary" %>
+    <h1>記事の新規作成</h1>
   </div>
-<% end %>
 
-<script>
-function updateFileName(input) {
-  if (input.files && input.files[0]) {
-    document.getElementById('fileName').innerText = input.files[0].name;
-  } else {
-    document.getElementById('fileName').innerText = "選択されていません";
+
+
+  <%= form_with(model: @article, url: users_articles_path, local: true, html: { multipart: true }) do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :content, "内容" %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :image, "画像" %>
+      <div class="input-group">
+        <%= form.file_field :image, class: "form-control", style: "display: none;", id: "imageFile", onchange: "updateFileName(this)" %>
+        <label for="imageFile" class="btn btn-secondary">ファイルを選択</label>
+      </div>
+      <span id="fileName">選択されていません</span>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit "新規作成", class: "btn btn-primary" %>
+    </div>
+    
+  <% end %>
+
+  <script>
+  function updateFileName(input) {
+    if (input.files && input.files[0]) {
+      document.getElementById('fileName').innerText = input.files[0].name;
+    } else {
+      document.getElementById('fileName').innerText = "選択されていません";
+    }
   }
-}
-</script>
+  </script>
 
-<%= link_to "戻る", dash_boards_index_path %>
+  <%= link_to "戻る", dash_boards_index_path %>
+</div>

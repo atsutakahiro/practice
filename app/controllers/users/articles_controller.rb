@@ -24,8 +24,9 @@ class Users::ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to users_articles_path, notice: 'Article was successfully created.'
+      redirect_to users_articles_path, notice: '新規作成に成功しました。'
     else
+      puts @article.errors.full_messages # エラーメッセージを出力
       render :new
     end
   end
@@ -34,7 +35,7 @@ class Users::ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
-      redirect_to users_articles_url, notice: 'Article was successfully updated.'
+      redirect_to users_articles_url, notice: '記事を更新しました。'
     else
       puts @article.errors.full_messages # エラーメッセージを出力
       render :edit
@@ -45,7 +46,7 @@ class Users::ArticlesController < ApplicationController
   # DELETE /articles/1
   def destroy
     @article.destroy
-    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+    redirect_to users_articles_url, notice: '記事を削除しました。'
   end
 
   private
