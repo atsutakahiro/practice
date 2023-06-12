@@ -27,8 +27,25 @@ ja:
         updated_at: 更新日
         new_password: 新しいパスワード
         confirm_new_password: 新しいパスワード（確認用）
+      article:
+        title: "タイトル"
+        content: "内容"
+    errrors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: "を入力してください"
+            content:
+              blank: "を入力してください"
+      messages:
+        record_invalid: "保存できませんでした: %{errors}"
+        prohibited_this_object_from_being_saved:
+          one: "1つのエラーが %{resource} の保存を阻止しました"
+          other: "%{count} つのエラーが %{resource} の保存を阻止しました"  
     models:
       user: ユーザー
+      article: 記事
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -143,3 +160,4 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+
